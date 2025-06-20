@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+{% block title %}Seller Dashboard{% endblock %}
+{% block content %}
+<h2>Seller Dashboard</h2>
+
+<form method="POST">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">{{ form.name.label }} {{ form.name(class_="form-control") }}</div>
+  <div class="mb-3">{{ form.price.label }} {{ form.price(class_="form-control") }}</div>
+  {{ form.submit(class_="btn btn-success") }}
+</form>
+
+<hr>
+<h4>Your Food Items</h4>
+<ul class="list-group">
+  {% for food in foods %}
+    <li class="list-group-item d-flex justify-content-between">
+      {{ food.name }} - ₹{{ food.price }}
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
+</body>
+</html>

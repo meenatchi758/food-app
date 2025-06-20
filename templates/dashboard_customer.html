@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+{% block title %}Customer Dashboard{% endblock %}
+{% block content %}
+<h2>Customer Dashboard</h2>
+
+<h4>Available Food Items</h4>
+<ul class="list-group">
+  {% for food in foods %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      {{ food.name }} - ₹{{ food.price }}
+      <a href="{{ url_for('order_food', food_id=food.id) }}" class="btn btn-primary btn-sm">Order</a>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
+</body>
+</html>
